@@ -19,4 +19,8 @@ decoder("TranslatedFile.txt", "RevertedFile.txt")
 #print("new text")
 #print(new.read())
 
+orig.close()
+trans.close()
+new.close()
+
 print(filecmp.cmp("Example.txt","RevertedFile.txt"))
