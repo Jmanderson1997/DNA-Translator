@@ -1,2 +1,3 @@
 # DNA-Translator
-Algorithm to translate data to a DNA sequence and back again
+
+This program is based on research and contraints given to me by one of my professors. ITs a work in progress and many parts are still incomplete. I will update and give summaries once im finished.
