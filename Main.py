@@ -1,16 +1,17 @@
-from Encoder import encoder
-from Decoder import decoder
+from Encoder import encoder,toDNA
+from Decoder import decoder, toText
+from NumberAssigner import numAssign
+from GCAT import gcat
 import filecmp 
 
 orig= open("Example.txt",'r')
-trans= open("TranslatedFile.txt",'r+')
-new= open("RevertedFile.txt",'r+') 
+ 
+print(numAssign("Example.txt"))
+#encoder('Example.txt',17)
+#decoder(17, "RevertedFile.txt")
+#gcat("10.txt")
 
-trans.truncate()
-new.truncate()
 
-encoder('Example.txt', "TranslatedFile.txt")
-decoder("TranslatedFile.txt", "RevertedFile.txt")
 
 #print("Old text")
 #print(orig.read())
@@ -20,7 +21,5 @@ decoder("TranslatedFile.txt", "RevertedFile.txt")
 #print(new.read())
 
 orig.close()
-trans.close()
-new.close()
 
 print(filecmp.cmp("Example.txt","RevertedFile.txt"))
