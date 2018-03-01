@@ -3,11 +3,11 @@ import numpy
 
 def decoder(fileNumber, revertedFile) :
 
-    new= open(revertedFile, 'w')
-    fileParts=[]
+    new= open(revertedFile, 'w')   #open file to recieve contents
+    fileParts=[]  #array of all parts of file
  
 
-    for files in os.listdir("./DNALibrary"): 
+    for files in os.listdir("./DNALibrary"):  #loop through folder and find all parts of the file
       files=os.path.join("./DNALibrary",files)   
       f=open(files) 
       fileNum=f.read(20)
@@ -18,7 +18,7 @@ def decoder(fileNumber, revertedFile) :
 
     partNums=[]
 
-    for i in range(0, len(fileParts)) :
+    for i in range(0, len(fileParts)) : #sort parts by part numbers
       f=open(fileParts[i])
       f.read(20)
       partSeq=f.read(10)
@@ -30,7 +30,7 @@ def decoder(fileNumber, revertedFile) :
     sortedIndecies=numpy.argsort(partNums)
     fileParts=fileParts[sortedIndecies]
 
-    for i in range(0, len(fileParts)):
+    for i in range(0, len(fileParts)):   #read sequences 
       f=open(fileParts[i])
       f.read(30)
       for j in range(0,30): 
@@ -38,15 +38,12 @@ def decoder(fileNumber, revertedFile) :
         char=chr(toText(seq, 5))
         print(char)
         new.write(char)
-        save=f.tell()
+        save=f.tell()   #check if any chars are left
         test=f.read(21)
         if not test: 
-            print("the check works")
             break
         f.seek(save)
-
-    new.close
-    exit()
+      f.close()        #close file
 
 def toText(seq, length):
    
