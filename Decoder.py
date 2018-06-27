@@ -39,9 +39,10 @@ def decoder(fileNumber, revertedFile) :
         print(char)
         new.write(char)
         save=f.tell()   #check if any chars are left
-        test=f.read(21)
-        if not test: 
-            break
+        for i in range(21):
+            test=f.read()
+            if not test: 
+               break
         f.seek(save)
       f.close()        #close file
 
